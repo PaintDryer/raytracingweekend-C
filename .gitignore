@@ -1,5 +1,7 @@
 # temp files
 *.swp
+*.o
+*.ppm
 
 # output
 raytracer
