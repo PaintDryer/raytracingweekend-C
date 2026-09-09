@@ -2,6 +2,7 @@
 #define VEC3_H
 
 #include <math.h>
+#include <stdio.h>
 
 typedef struct
 {
@@ -84,6 +85,12 @@ static inline vec3 v3cross(const vec3 u, const vec3 v)
 	return newv3( u.y * v.z - u.z * v.y,
 				  u.z * v.x - u.x * v.z,
 				  u.x * v.y - u.y * v.x );
+}
+
+// utility
+static inline void v3print(const vec3 v)
+{
+	printf("%f %f %f", v.x, v.y, v.z);
 }
 
 #endif
