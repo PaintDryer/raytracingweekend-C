@@ -42,6 +42,11 @@ static inline vec3 v3sub(vec3 v, const vec3 a)
 				  v.y - a.y,
 				  v.z - a.z );
 }
+
+static inline vec3 v3neg(vec3 v)
+{
+	return v3sub(v3zero(), v);
+}
 	
 static inline vec3 v3mul(vec3 v, const double i)
 {

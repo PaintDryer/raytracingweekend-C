@@ -39,7 +39,8 @@ static inline bool hitSph(const ray r, const sphere s, double ray_tmin, double r
 
 	rec->t = root;
 	rec->p = at(r, rec->t);
-	rec->normal = v3div( v3sub(rec->p, s.center), s.radius);
+	vec3 outward_normal = v3div( v3sub(rec->p, s.center), s.radius);
+	set_face_normal(rec, r, outward_normal);
 	return true;
 }
 #endif
