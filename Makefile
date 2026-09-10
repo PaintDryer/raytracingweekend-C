@@ -17,3 +17,5 @@ clean:
 	rm -rf *debug.exe
 	rm -rf src/*.o
 	rm -rf image.ppm
+
+again: clean raytracer 

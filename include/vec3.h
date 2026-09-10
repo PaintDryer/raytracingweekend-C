@@ -3,7 +3,7 @@
 
 #include "rtweekend.h"
 
-typedef struct
+typedef struct vec3_t
 {
 	double x;
 	double y;

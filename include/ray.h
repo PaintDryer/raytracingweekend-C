@@ -3,7 +3,7 @@
 
 #include "rtweekend.h"
 
-typedef struct
+typedef struct ray_t
 {
 	point3	orig;
 	vec3	dir;

@@ -4,7 +4,7 @@
 #include "rtweekend.h"
 #include "hittable.h"
 
-typedef struct
+typedef struct sphere_t
 {
 	point3	center;
 	double	radius;
