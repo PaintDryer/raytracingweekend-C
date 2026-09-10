@@ -15,9 +15,7 @@ typedef vec3 point3;
 
 static inline vec3 newv3(double x, double y, double z)
 {
-	return (vec3){ .x = x,
-				   .y = y,
-				   .z = z };
+	return (vec3){ x, y, z };
 }
 
 // hardcoded vectors
@@ -55,9 +53,7 @@ static inline vec3 v3mul(vec3 v, const double i)
 
 static inline vec3 v3div(vec3 v, const double i)
 {
-	return newv3( v.x / i,
-				  v.y / i,
-				  v.z / i );
+	return v3mul(v, 1 / i);
 }
 
 // vector operations
