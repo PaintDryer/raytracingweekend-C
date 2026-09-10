@@ -20,16 +20,17 @@ int	main(void)
 	
 	double hit_sphere(point3 center, double radius, ray r)
 	{
+		// b = -2d(C-Q)
+		// let h = -2b
 		vec3 oc = v3sub(center, r.orig); 
 		double a = v3dot(r.dir, r.dir); // d^2
-		double b = -2 * v3dot(r.dir, oc); // -2d(C-Q)
+		double h = v3dot(r.dir, oc); // -2d(C-Q)
 		double c = v3dot(oc, oc) - radius * radius; // (C-Q)^2 - r^2
-		double discriminant = b * b - 4 * a * c;
+		double discriminant = h * h - a * c;
 		// solve for t if possible
 		if (discriminant < 0)
 			return (-1);
-		printf("%f\n", (-b -sqrt(discriminant)) / 2 / a);
-		return (-b - sqrt(discriminant)) / (2 * a);
+		return (h - sqrt(discriminant)) / a;
 	}
 
 	color ray_color(const ray r)
@@ -41,8 +42,6 @@ int	main(void)
 		{
 			vec3 n = v3unit( v3sub(at(r, t), spherepos));
 			n = v3mul( v3add(n, v3one()), 0.5);
-			v3print(n);
-			printf("\n");
 			return (n);
 		}
 
