@@ -1,9 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include "vec3.h"
-#include "color.h"
-#include "ray.h"
+#include "rtweekend.h"
+#include "sphere.h"
+#include "hittable.h"
+
 #define WHITE v3one()
 #define BLUE newv3(0.5, 0.7, 1.0)
 #define RED newv3(1.0, 0, 0)
@@ -18,30 +16,14 @@ int	main(void)
 		return (1);
 	}
 	
-	double hit_sphere(point3 center, double radius, ray r)
-	{
-		// b = -2d(C-Q)
-		// let h = -2b
-		vec3 oc = v3sub(center, r.orig); 
-		double a = v3dot(r.dir, r.dir); // d^2
-		double h = v3dot(r.dir, oc); // -2d(C-Q)
-		double c = v3dot(oc, oc) - radius * radius; // (C-Q)^2 - r^2
-		double discriminant = h * h - a * c;
-		// solve for t if possible
-		if (discriminant < 0)
-			return (-1);
-		return (h - sqrt(discriminant)) / a;
-	}
-
 	color ray_color(const ray r)
 	{
-		point3 spherepos = newv3(0, 0, -1.0);
-		double t = hit_sphere(spherepos, 0.5, r);
-		// Find normal from t
-		if (t > 0)
+		sphere s = newSph(newv3(0, 0, -1), 0.5);
+		hit rec;
+		if (hitSph(r, s, 0, 999, &rec))
 		{
-			vec3 n = v3unit( v3sub(at(r, t), spherepos));
-			n = v3mul( v3add(n, v3one()), 0.5);
+			vec3 n = rec.normal;
+			n = v3mul( v3add(n, v3one()), 0.5); // lerps between 1 and 0.5
 			return (n);
 		}
 

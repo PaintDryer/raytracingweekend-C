@@ -1,8 +1,7 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include <math.h>
-#include <stdio.h>
+#include "rtweekend.h"
 
 typedef struct
 {

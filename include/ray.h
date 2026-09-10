@@ -1,6 +1,8 @@
 #ifndef RAY_H
 #define RAY_H
 
+#include "rtweekend.h"
+
 typedef struct
 {
 	point3	orig;
