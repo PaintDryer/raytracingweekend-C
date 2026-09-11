@@ -10,15 +10,18 @@ typedef struct sphere_t
 	double	radius;
 } sphere;
 
+// gets called by newSphObject to make a new sphere
 static inline sphere newSph(point3 center, double radius)
 {
 	return (sphere) {center, radius};
 }
 
+// 
 static inline bool hitSph(const ray r, const sphere s, double ray_tmin, double ray_tmax, hit *rec)
 {
 	vec3 oc = v3sub(s.center, r.orig);
 	double a = v3len_sq(r.dir);
+	// let h = -2b
 	double h = v3dot(r.dir, oc);
 	double c = v3len_sq(oc) - s.radius * s.radius;
 

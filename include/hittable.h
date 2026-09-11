@@ -2,7 +2,7 @@
 #define HITTABLE_H
 
 #include "ray.h"
-#include "sphere.h"
+#include "objects.h"
 
 typedef struct hit_record_t
 {
@@ -11,30 +11,6 @@ typedef struct hit_record_t
 	double	t;
 	bool	front_face;
 } hit;
-
-typedef struct sphere_t
-{
-	point3	center;
-	double	radius;
-} sphere;
-
-typedef enum
-{
-	SPHERE
-	// Quad
-	// ...
-} ObjectType;
-
-typedef struct object_t
-{
-	ObjectType type;
-	union
-	{
-		struct sphere_t s;
-		// Quad quad;
-		// ...
-	};
-} object;
 
 // Due to lack of class inheritance in C
 // a hit function must be completely defined in each object
