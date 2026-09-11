@@ -17,7 +17,7 @@ static inline sphere newSph(point3 center, double radius)
 }
 
 // 
-static inline bool hitSph(const ray r, const sphere s, double ray_tmin, double ray_tmax, hit *rec)
+static inline bool hitSph(const ray r, const sphere s, interval ray_t, hit *rec)
 {
 	vec3 oc = v3sub(s.center, r.orig);
 	double a = v3len_sq(r.dir);
@@ -33,10 +33,10 @@ static inline bool hitSph(const ray r, const sphere s, double ray_tmin, double r
 
 	// nearest root
 	double root = (h - sqrtd) / a; //
-	if (root <= ray_tmin || ray_tmax <= root)
+	if (!contains(ray_t, root))
 	{
 		root = (h + sqrtd) / a; // +
-		if (root <= ray_tmin || ray_tmax <= root)
+		if (!contains(ray_t, root))
 			return false;
 	}
 

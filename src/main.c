@@ -20,7 +20,7 @@ int	main(void)
 	{
 		sphere s = newSph(newv3(0, 0, -1), 0.5);
 		hit rec;
-		if (hitSph(r, s, 0, 999, &rec))
+		if (hitSph(r, s, newinterval(0, infinity), &rec))
 		{
 			vec3 n = rec.normal;
 			n = v3mul( v3add(n, v3one()), 0.5); // lerps between 1 and 0.5

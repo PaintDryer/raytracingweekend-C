@@ -11,20 +11,19 @@ typedef struct
 static inline interval newinterval(double min, double max)
 {
 	if (!max)
-		min = +infinity;
-	if (!min)
-		max = -infinity;
+		max = +infinity;
+	// cannot set default value of -infinity due to no overloads 
 	return (interval){ min, max };
 }
 
 static inline interval emp_interval()
 {
-	newinterval(+infinity, -infinity);
+	return newinterval(+infinity, -infinity);
 }
 
 static inline interval uni_interval()
 {
-	newinterval(-infinity, +infinity);
+	return newinterval(-infinity, +infinity);
 }
 
 bool contains(interval i, double x)
