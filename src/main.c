@@ -22,9 +22,8 @@ int	main(void)
 		hit rec;
 		if (hitSph(r, s, newinterval(0, infinity), &rec))
 		{
-			vec3 n = rec.normal;
-			n = v3mul( v3add(n, v3one()), 0.5); // lerps between 1 and 0.5
-			return (n);
+			return v3mul( v3add(rec.normal, v3one()), 0.5);
+			// lerps between 1 and 0.5
 		}
 
 		vec3 unit_direction = v3unit(r.dir);
