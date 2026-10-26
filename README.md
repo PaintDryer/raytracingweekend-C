@@ -1,7 +1,7 @@
 ABANDONED:
 1. Though I've learned a lot adapting an object oriented approach into functional programming is going to continue becoming exponentially more complex to convert
 2. I've since learned that unlike C++, C tries to keep functions in .c files rather than headers which included class related functions.
-3. Perhaps will be revisited in the future
+3. Perhaps will be revisited in the future when I have more than 2 months of C experience lol
 
 Compiles with cc through Make.
 
